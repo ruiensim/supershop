@@ -6,8 +6,8 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer>
-        <Container>
+    <footer className="bg-dark text-light">
+        <Container >
             <Row>
                 <Col className='text-center py-3'>
                 <p>Super Shop &copy; {currentYear}</p>
