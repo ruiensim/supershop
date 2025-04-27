@@ -1,15 +1,24 @@
 import connectDB from './config/db.js';
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import productsRoute from './routes/productRoute.js';
+import userRoute from './routes/userRoute.js';
 import dotenv from 'dotenv';
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 dotenv.config();
+
 
 const port = process.env.PORT || 4000;
 connectDB();
 const app = express();
 
+//Body parse 
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
+app.use(cookieParser());
+
 app.use('/api/products',productsRoute);
+app.use('/api/users',userRoute);
 
 
 app.get('/',(req,res)=>{
