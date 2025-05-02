@@ -22,8 +22,6 @@ const authUser = asyncHandler(async (req,res)=>{
         throw new Error('Invalid email or password');
     }
 
-    console.log(req.body);
-    res.send('auth user');
 });
 
 const registerUser = asyncHandler(async (req,res)=>{
