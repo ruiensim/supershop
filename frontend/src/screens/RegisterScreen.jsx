@@ -41,12 +41,12 @@ function RegisterScreen() {
         toast.error('Password do not match');
     }else{
         try{
-            console.log('hi');
+           
             const res = await register({name,email,password}).unwrap();
             dispatch(setCredentials({...res}));
             navigate(redirect);
         }catch(error){
-            console.log('gg');
+            
             toast.error(error?.data?.message || error.error);
         }
     }

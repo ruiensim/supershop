@@ -28,7 +28,7 @@ const Header = () => {
     }
   }
 
-  console.log('show',cartItems)
+
   return (
     <header>
         <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect>
