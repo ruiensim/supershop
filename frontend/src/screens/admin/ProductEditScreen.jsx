@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Form,Button, Table } from 'react-bootstrap'
+import { Form,Button, Row, Col } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
-import { LinkContainer } from 'react-router-bootstrap'
 import { toast } from 'react-toastify'
 import { useGetProductDetailsQuery, useUpdateProductMutation, useUploadProductImageMutation } from '../../slices/productApiSlice'
 import FormContainer from '../../components/FormContainer'
@@ -113,7 +112,32 @@ if(product){
           onChange={(e) => setPrice(Number(e.target.value))}
         />
       </Form.Group>
+      <Row className="my-3">
+  <Col>
+  <Form.Label>Price</Form.Label>
+    <Form.Control
+      type="number"
+      placeholder="长"
 
+    />
+  </Col>
+  <Col>
+  <Form.Label>Price</Form.Label>
+    <Form.Control
+      type="number"
+      placeholder="宽"
+   
+    />
+  </Col>
+  <Col>
+    <Form.Control
+      type="number"
+      placeholder="高"
+
+   
+    />
+  </Col>
+</Row>
       <Form.Group controlId="description" className="my-2">
         <Form.Label>Description</Form.Label>
         <Form.Control
@@ -136,8 +160,8 @@ if(product){
             type='file'
             label='Choose File'
             onChange={uploadFileHandler}
-        >
-        </Form.Control>
+        />
+        {loadingUpload && <Loader/>}
       </Form.Group>
       <Form.Group controlId="brand" className="my-2">
         <Form.Label>Brand</Form.Label>

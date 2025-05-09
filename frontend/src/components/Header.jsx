@@ -1,13 +1,13 @@
 import {Badge, Navbar,Nav,Container, NavDropdown } from 'react-bootstrap'
 import { FaShoppingCart, FaUser } from 'react-icons/fa'
 import { LinkContainer } from 'react-router-bootstrap'
-import logo from '../assets/logo.png'
+import logo from '../assets/holzernlogo2.jpeg'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {logOut} from '../slices/authSlice'
 import { useLogoutMutation } from '../slices/userApiSlice'
 import { useNavigate } from 'react-router-dom'
-
+import SearchBox from './SearchBox'
 const Header = () => {
 
   const {  cartItems } = useSelector((state)=>state.cart);
@@ -35,13 +35,24 @@ const Header = () => {
             <Container>
                 <LinkContainer to="">
                 <Navbar.Brand>
-                    <img src={logo} alt="logo"/>
-                    SuperShop
+                <img
+                src={logo}
+                alt="logo"
+                style={{ maxHeight: '40px', marginRight: '10px' }}
+                className="d-inline-block align-top"
+                />
+                Holzern Furniture
                 </Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id = "basic-navbar-nav">
                     <Nav className='ms-auto'>
+                        <SearchBox/>
+                        <LinkContainer to="/about">
+                        <Nav.Link href='about' >About Us
+                       
+                        </Nav.Link>
+                        </LinkContainer>
                         <LinkContainer to="/cart">
                         <Nav.Link href='login' ><FaShoppingCart/>Cart
                         {
