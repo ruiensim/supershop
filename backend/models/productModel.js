@@ -67,6 +67,27 @@ const productSchema = new mongoose.Schema({
         required:true,
         default:0,
     },
+    tableDia:{
+        type:Number,
+    },
+    tableLength:{
+        type:Number,
+    },
+    tableWidth:{
+        type:Number,
+    },
+    tableHeight:{
+        type:Number,
+    },
+    chairLength:{
+        type:Number,
+    },
+    chairWidth:{
+        type:Number,
+    },
+    chairHeight:{
+        type:Number,
+    },
 },{timestamps:true});
 
 const Product = mongoose.model('Product',productSchema);

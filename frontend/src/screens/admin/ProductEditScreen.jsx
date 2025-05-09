@@ -17,6 +17,13 @@ const [image, setImage] = useState('');
 const [brand, setBrand] = useState('');
 const [category, setCategory] = useState('');
 const [countInStock, setCountInStock] = useState(0);
+const [tableDia, setTableDia] = useState(0);
+const [tableHeight, setTableHeight] = useState(0);
+const [tableLength, setTableLength] = useState(0);
+const [tableWidth, setTableWidth] = useState(0);
+const [chairHeight, setChairHeight] = useState(0);
+const [chairLength, setChairLength] = useState(0);
+const [chairWidth, setChairWidth] = useState(0);
 
 const [uploadProductImage, {isLoading: loadingUpload}] = useUploadProductImageMutation();
 
@@ -51,6 +58,13 @@ const submitHandler = async(e) =>{
         category,
         countInStock,
         description,
+        tableDia,
+        tableHeight,
+        tableLength,
+        tableWidth,
+        chairHeight,
+        chairLength,
+        chairWidth
     };
 
     const result = await updateProduct(updatedProduct);
@@ -71,6 +85,13 @@ if(product){
     setBrand(product.brand);
     setCategory(product.category);
     setCountInStock(product.countInStock);
+    setTableDia(product.tableDia);
+    setTableHeight(product.tableHeight);
+    setTableLength(product.tableLength);
+    setTableWidth(product.tableWidth);
+    setChairHeight(product.chairHeight);
+    setChairLength(product.chairLength);
+    setChairWidth(product.chairWidth);
 }
 },
 [product]);
@@ -112,32 +133,73 @@ if(product){
           onChange={(e) => setPrice(Number(e.target.value))}
         />
       </Form.Group>
-      <Row className="my-3">
+  <Row className="my-3">
   <Col>
-  <Form.Label>Price</Form.Label>
-    <Form.Control
-      type="number"
-      placeholder="长"
-
-    />
-  </Col>
-  <Col>
-  <Form.Label>Price</Form.Label>
-    <Form.Control
-      type="number"
-      placeholder="宽"
-   
-    />
-  </Col>
-  <Col>
-    <Form.Control
-      type="number"
-      placeholder="高"
-
-   
-    />
-  </Col>
-</Row>
+      <Form.Label>Table Dia</Form.Label>
+      <Form.Control
+        type="number"
+        placeholder="Table Dia"
+        value={tableDia}
+        onChange={(e) => setTableDia(Number(e.target.value))}
+      />
+    </Col>
+    <Col>
+      <Form.Label>Table Length</Form.Label>
+      <Form.Control
+        type="number"
+        placeholder="Table Length"
+        value={tableLength}
+        onChange={(e) => setTableLength(Number(e.target.value))}
+      />
+    </Col>
+    <Col>
+      <Form.Label>Table Width</Form.Label>
+      <Form.Control
+        type="number"
+        placeholder="Table Width"
+        value={tableWidth}
+        onChange={(e) => setTableWidth(Number(e.target.value))}
+      />
+    </Col>
+    <Col>
+      <Form.Label>Table Height</Form.Label>
+      <Form.Control
+        type="number"
+        placeholder="Table Height"
+        value={tableHeight}
+        onChange={(e) => setTableHeight(Number(e.target.value))}
+      />
+    </Col>
+  </Row>
+  <Row className="my-3">
+    <Col>
+      <Form.Label>Chair Length</Form.Label>
+      <Form.Control
+        type="number"
+        placeholder="Chair Length"
+        value={chairLength}
+        onChange={(e) => setChairLength(Number(e.target.value))}
+      />
+    </Col>
+    <Col>
+      <Form.Label>Chair Width</Form.Label>
+      <Form.Control
+        type="number"
+        placeholder="Chair Width"
+        value={chairWidth}
+        onChange={(e) => setChairWidth(Number(e.target.value))}
+      />
+    </Col>
+    <Col>
+      <Form.Label>Chair Height</Form.Label>
+      <Form.Control
+        type="number"
+        placeholder="Chair Height"
+        value={chairHeight}
+        onChange={(e) => setChairHeight(Number(e.target.value))}
+      />
+    </Col>
+  </Row>
       <Form.Group controlId="description" className="my-2">
         <Form.Label>Description</Form.Label>
         <Form.Control

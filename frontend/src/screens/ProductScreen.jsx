@@ -10,6 +10,7 @@ import { addToCart } from '../slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import Meta from '../components/Meta'
+import { FaTimes } from 'react-icons/fa'
 
 const ProductScreen = () => {
 
@@ -74,6 +75,21 @@ const ProductScreen = () => {
           <ListGroup.Item>
               Price: RM{product.price}
           </ListGroup.Item>
+          {product.tableHeight && (
+          <ListGroup.Item>
+            Table Size: 
+            {product.tableDia
+            ? ` ${product.tableDia}' Dia `
+            : ` ${product.tableWidth}' W  X  ${product.tableLength}' L `}
+            X  {product.tableHeight}' H
+            </ListGroup.Item>
+            )}
+            {product.chairWidth && product.chairLength && product.chairHeight && (
+            <ListGroup.Item>
+              Chair Size:
+             {` ${product.chairWidth}' C `}  X {` ${product.chairLength}' L `} X {` ${product.chairHeight}' H`}
+              </ListGroup.Item>
+)}
           <ListGroup.Item>
               Description: {product.description}
           </ListGroup.Item>

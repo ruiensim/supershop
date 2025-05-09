@@ -44,7 +44,15 @@ const createProduct = asyncHandler(async (req,res)=>{
         category: 'sample category',
         countInStock: 0,
         numReviews: 0,
-        description: 'sample description'
+        description: 'sample description',
+        tableDia: 0,
+        tableLength: 0,
+        tableWidth: 0,
+        tableHeight: 0,
+        chairHeight: 0,
+        chairWidth: 0,
+        chairLength: 0,
+
 
     })
     const createdProduct = await product.save();
@@ -54,7 +62,20 @@ const createProduct = asyncHandler(async (req,res)=>{
 
 const updateProduct = asyncHandler(async (req,res)=>{
 
-   const {name, price, description,image, brand, category, countInStock} = req.body;
+   const {name, 
+          price, 
+          description,
+          image, 
+          brand, 
+          category, 
+          countInStock, 
+          tableDia, 
+          tableHeight, 
+          tableLength, 
+          tableWidth,
+          chairHeight,
+          chairLength,
+          chairWidth} = req.body;
 
    const product = await Product.findById(req.params.id);
 
@@ -67,6 +88,13 @@ const updateProduct = asyncHandler(async (req,res)=>{
     product.brand = brand;
     product.category = category;
     product.countInStock = countInStock;
+    product.tableDia = tableDia;
+    product.tableHeight = tableHeight;
+    product.tableLength = tableLength;
+    product.tableWidth = tableWidth;
+    product.chairHeight = chairHeight;
+    product.chairLength = chairLength;
+    product.chairWidth = chairWidth;
 
     const updatedproduct = await product.save();
     res.json(updatedproduct);

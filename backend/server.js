@@ -31,9 +31,20 @@ app.get('/api/config/paypal',  (req,res) => res.send({ clientId: process.env.PAY
 const _dirname = path.resolve();
 app.use('/uploads', express.static(path.join(_dirname,'/uploads')));
 
-app.get('/',(req,res)=>{
-    res.send('API is running...');
-});
+if(process.env.NODE_ENV === 'production'){
+
+    app.use(express.static(path.join(_dirname,'/frontend/build')));
+    app.get('*',(req,res) =>{
+        res.sendFile(path.resolve(_dirname,'frontend','build','index.html'))
+    });
+
+}else{
+    app.get('/',(req,res)=>{
+        res.send('API is running...');
+    });
+    
+}
+
 
 
 app.get('/food',(req,res)=>{
